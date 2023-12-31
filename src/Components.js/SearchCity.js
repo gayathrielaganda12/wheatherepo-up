@@ -5,11 +5,11 @@ import searchIcon from '../assests/images/search.png'
 
 
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const SearchCity = () => {
 
-  const weatherState = useSelector((state) => state.weather);
+
 
   const dispatch = useDispatch();
   const [city, setCity] = useState("");

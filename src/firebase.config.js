@@ -8,26 +8,26 @@ import { getAuth } from "firebase/auth";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBmGVbbZIGyn7QEIOZNfykhuEUGRyt8Oyo",
-  authDomain: "num-verification.firebaseapp.com",
-  projectId: "num-verification",
-  storageBucket: "num-verification.appspot.com",
-  messagingSenderId: "334615785506",
-  appId: "1:334615785506:web:74117814bf86a34ff11a7b",
-  measurementId: "G-GNQVM5WQ34"
-};
-
-
 // const firebaseConfig = {
-//   apiKey: "AIzaSyDf2AoGUYy0cQUFfNwGT_-abd3zUS8T7eo",
-//   authDomain: "otp-ph.firebaseapp.com",
-//   projectId: "otp-ph",
-//   storageBucket: "otp-ph.appspot.com",
-//   messagingSenderId: "842384869837",
-//   appId: "1:842384869837:web:2d7b3e7c13fb6c93141c84",
-//   measurementId: "G-7CE2273CY1"
+//   apiKey: "AIzaSyBmGVbbZIGyn7QEIOZNfykhuEUGRyt8Oyo",
+//   authDomain: "num-verification.firebaseapp.com",
+//   projectId: "num-verification",
+//   storageBucket: "num-verification.appspot.com",
+//   messagingSenderId: "334615785506",
+//   appId: "1:334615785506:web:74117814bf86a34ff11a7b",
+//   measurementId: "G-GNQVM5WQ34"
 // };
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDf2AoGUYy0cQUFfNwGT_-abd3zUS8T7eo",
+  authDomain: "otp-ph.firebaseapp.com",
+  projectId: "otp-ph",
+  storageBucket: "otp-ph.appspot.com",
+  messagingSenderId: "842384869837",
+  appId: "1:842384869837:web:2d7b3e7c13fb6c93141c84",
+  measurementId: "G-7CE2273CY1"
+};
 
 
 

@@ -1,7 +1,5 @@
-
 import { CgSpinner } from "react-icons/cg";
-import authentication from './assests/images/Authentication.png'
-
+import authentication from './assests/images/Authentication.png';
 import OtpInput from "otp-input-react";
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
@@ -12,7 +10,6 @@ import { toast, Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setAuthenticated } from "./actions/authActions";
 import NavigationBar from "./Components.js/NavigationBar";
-
 
 const LoginPage = () => {
   const [otp, setOtp] = useState("");
@@ -39,7 +36,6 @@ const LoginPage = () => {
   }
 
   function onSignup() {
-    console.log("onsign up working")
     setLoading(true);
     onCaptchVerify();
 
@@ -52,7 +48,7 @@ const LoginPage = () => {
         window.confirmationResult = confirmationResult;
         setLoading(false);
         setShowOTP(true);
-        toast.success("OTP sended successfully!");
+        toast.success("OTP sent successfully!");
       })
       .catch((error) => {
         console.log(error);
@@ -67,7 +63,6 @@ const LoginPage = () => {
       .then(async (res) => {
         console.log(res);
         dispatch(setAuthenticated(true));
-             
         setUser(res.user);
         setLoading(false);
       })
@@ -77,89 +72,101 @@ const LoginPage = () => {
       });
   }
 
-  return ( 
-  <div>
+  return (
+    <div>
       <NavigationBar />
-    <section className=" flex items-start justify-center h-screen m-4" >
-     
-      <div>
-        <Toaster toastOptions={{ duration: 4000 }} />
-        <div id="recaptcha-container" ></div>
-        {user ? (
-          <h2 className="text-center text-white font-medium text-2xl" >
-            👍Login Success
-          </h2>
-        ) : (
-         <div >
-           <div className="border:'1px solid #ADD8E6' flex flex-col gap-4 rounded-lg p-4" style={{boxShadow:'10px 8px 8px  4px #ADD8E6 ',backgroundColor:'#67B7D1'}}>
-             <img  src={authentication} alt="authentication" style={{height:'10em',width:'10em',margin:'auto',borderRadius:'50%'}}/>
-            {showOTP ? (
-              <>
-              
-                <label
-                  htmlFor="otp"
-                  className="font-bold text-xl  text-center text-white"
-                  style={{color:'#4A9DB5'}}
-                >
-                  Enter your OTP
-                </label>
-                <OtpInput
-                  value={otp}
-                  onChange={setOtp}
-                  OTPLength={6}
-                  otpType="number"
-                  disabled={false}
-                  autoFocus
-                  className="opt-container "
-                  style={{padding:'20px'}}
-                  
-                ></OtpInput>
-                <button
-                  onClick={onOTPVerify}
-                  className=" w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
-                  style={{backgroundColor:'#3a9fbf'}}
-                >
-                  {loading && (
-                    <CgSpinner size={20} className="mt-1 animate-spin" />
-                  )}
-                  <span className="text-white">Verify OTP</span>
-                </button>
-              </>
-            ) : (
-              <>
-              {/* Verify your ph number */}
-               
-               <div  style={{display:'flex',flexDirection:'column',gap:'2.5em',padding:'2em'}} >
-               <label
-                  htmlFor=""
-                  className="font-bold text-xl  text-center"
-                  style={{color:'white'}}
-                >
-                  Verify your phone number
-                </label>
-               
-                                  <PhoneInput country={"in"} value={ph} onChange={setPh}  />
-
-              
-                <button
-                  onClick={onSignup}
-                  className=" w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
-                  style={{backgroundColor:'#3a9fbf'}}
-                >
-                  {loading && (
-                    <CgSpinner size={20} className="mt-1 animate-spin" />
-                  )}
-                  <span >Send code via SMS</span>
-                </button>
-               </div>
-              </>
-            )}
-          </div>
-          </div>
-        )}
-      </div>
-    </section>
-  </div>
+      <section className="flex items-start justify-center h-screen m-4">
+        <div>
+          <Toaster toastOptions={{ duration: 4000 }} />
+          <div
+            id="recaptcha-container"
+            className="hidden" // Hide the reCAPTCHA container initially
+          ></div>
+          {user ? (
+            <h2 className="text-center text-white font-medium text-2xl">
+              👍Login Success
+            </h2>
+          ) : (
+            <div>
+              <div className="border border-blue-500 flex flex-col gap-4 rounded-lg p-4 shadow-md" style={{backgroundColor: '#3a9fbf'}}>
+                <img
+                  src={authentication}
+                  alt="authentication"
+                  className="h-40 w-40 mx-auto rounded-full"
+                />
+                {showOTP ? (
+                  <>
+                    <label
+                      htmlFor="otp"
+                      className="font-bold text-xl text-center text-white"
+                    >
+                      Enter your OTP
+                    </label>
+                    <OtpInput
+                      value={otp}
+                      onChange={setOtp}
+                      OTPLength={6}
+                      otpType="number"
+                      disabled={false}
+                      autoFocus
+                      className="opt-container p-4"
+                    ></OtpInput>
+                    <button
+                      onClick={onOTPVerify}
+                      className="w-full flex gap-1 items-center justify-center py-2.5 text-white rounded bg-blue-500"
+                    >
+                      {loading && (
+                        <CgSpinner
+                          size={20}
+                          className="mt-1 animate-spin"
+                        />
+                      )}
+                      <span className="text-white">Verify OTP</span>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {/* Verify your phone number */}
+                    <div className="flex flex-col gap-4 p-4">
+                      <label
+                        htmlFor=""
+                        className="font-bold text-xl text-center text-white"
+                      >
+                        Verify your phone number
+                      </label>
+                      <PhoneInput
+                        country={"in"}
+                        value={ph}
+                        onChange={setPh}
+                        inputStyle={{
+                          padding: '0.75rem',
+                          fontSize: '1rem',
+                          width: '100%',
+                          borderRadius: '0.375rem',
+                          border: '1px solid #a0aec0',
+                        }}
+                      />
+                      <button
+                        onClick={onSignup}
+                        className="w-full flex gap-1 items-center justify-center py-2.5 text-white rounded bg-blue-500"
+                      >
+                        {loading && (
+                          <CgSpinner
+                            size={20}
+                            className="mt-1 animate-spin"
+                          />
+                        )}
+                        <span>Send code via SMS</span>
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
   );
 };
 

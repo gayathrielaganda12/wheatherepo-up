@@ -88,7 +88,7 @@ const LoginPage = () => {
             </h2>
           ) : (
             <div>
-              <div className="border border-blue-500 flex flex-col gap-4 rounded-lg p-4 shadow-md" style={{backgroundColor: '#3a9fbf'}}>
+              <div className="border border-blue-500 flex flex-col gap-4 rounded-lg p-2 shadow-md" style={{backgroundColor: '#3a9fbf'}}>
                 <img
                   src={authentication}
                   alt="authentication"
@@ -139,7 +139,7 @@ const LoginPage = () => {
                         value={ph}
                         onChange={setPh}
                         inputStyle={{
-                          padding: '0.75rem',
+                         
                           fontSize: '1rem',
                           width: '100%',
                           borderRadius: '0.375rem',

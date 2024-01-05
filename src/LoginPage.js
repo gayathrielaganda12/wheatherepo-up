@@ -110,7 +110,7 @@ const LoginPage = () => {
             </h2>
           ) : (
             <div>
-              <div className="border border-blue-500 flex flex-col gap-4 rounded-lg p-4 shadow-md" style={{backgroundColor: '#3a9fbf'}}>
+              <div className="border border-blue-500 flex flex-col gap-4 rounded-lg p-2 shadow-md" style={{backgroundColor: '#3a9fbf'}}>
                 <img
                   src={authentication}
                   alt="authentication"

@@ -44,16 +44,35 @@ const LoginPage = () => {
     const formatPh = "+" + ph;
 
     signInWithPhoneNumber(auth, formatPh, appVerifier)
-      .then((confirmationResult) => {
-        window.confirmationResult = confirmationResult;
-        setLoading(false);
-        setShowOTP(true);
-        toast.success("OTP sent successfully!");
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
+    .then((confirmationResult) => {
+      window.confirmationResult = confirmationResult;
+      setLoading(false);
+      setShowOTP(true);
+      toast.success("OTP sent successfully!");
+    })
+    .catch((error) => {
+      console.log("Error object:", error);
+  
+      if (error.response && error.response.status === 400) {
+       
+        if (error.code === "auth/captcha-check-failed") {
+          toast.error("reCAPTCHA verification failed. Please try again.");
+        } else if (error.code === "auth/invalid-verification-code") {
+          toast.error("Invalid OTP. Please enter a valid OTP.");
+        } else {
+          console.error("Unhandled 400 error:", error);
+          toast.error("An unexpected 400 error occurred. Please try again.");
+        }
+      } else if (error.code === "your-timeout-error-code") {
+      
+        toast.error("Timeout error. Please try again later.");
+      }
+  
+      setLoading(false);
+    });
+  
+  
+
   }
 
   function onOTPVerify() {
@@ -69,6 +88,9 @@ const LoginPage = () => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
+        toast.error("Invalid otp ,Please Enter Valid otp");
+        setOtp("")
+
       });
   }
 
@@ -139,7 +161,7 @@ const LoginPage = () => {
                         value={ph}
                         onChange={setPh}
                         inputStyle={{
-                          padding: '0.75rem',
+                         
                           fontSize: '1rem',
                           width: '100%',
                           borderRadius: '0.375rem',
